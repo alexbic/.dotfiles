@@ -1,49 +1,61 @@
 " --- Основы ---
 set nocompatible           " Отключить совместимость с vi
 syntax on                  " Включить подсветку синтаксиса
-set encoding=utf-8         " Кодировка интерфейса
-set fileencodings=utf-8    " Кодировки файлов
+set encoding=utf-8         " Интерфейс в UTF-8
+set fileencodings=utf-8    " Кодировка файлов
 
 " --- Поведение клавиш ---
-set backspace=indent,eol,start " Нормальный Backspace
-set mouse=a                    " Включить мышь во всех режимах
+set backspace=indent,eol,start " Backspace работает "нормально"
+set mouse=a                    " Включить мышь везде
 
 " --- Интерфейс ---
-set number                    " Показывать номера строк
-set relativenumber            " Относительные номера (для быстрого перемещения)
-set cursorline                " Подсвечивать текущую строку
-set showcmd                   " Отображать команды в правом нижнем углу
+set number                    " Обычные номера строк
+" set relativenumber          " Отключено, чтобы не прыгали номера
+set cursorline                " Подсветка текущей строки
+set showcmd                   " Отображать вводимую команду
 set ruler                     " Показывать позицию курсора
-set laststatus=2              " Всегда показывать строку статуса
-set wildmenu                  " Меню автодополнения команд
+set laststatus=2              " Строка статуса всегда видна
+set wildmenu                  " Удобное меню команд
+
+" --- Подсветка строки и номера ---
+hi CursorLine term=bold cterm=bold ctermbg=236 guibg=#3a3a3a
+hi LineNr ctermfg=darkgray
+hi CursorLineNr ctermfg=yellow cterm=bold
 
 " --- Поиск ---
-set ignorecase                " Игнорировать регистр при поиске
-set smartcase                 " Но учитывать регистр, если есть заглавные буквы
-set incsearch                 " Пошаговый поиск
-set hlsearch                  " Подсветка результатов поиска
+set ignorecase               " Без учета регистра
+set smartcase                " Но учитывать, если есть заглавные
+set incsearch                " Интерактивный поиск
+set hlsearch                 " Подсвечивать совпадения
 
-" --- Отступы ---
-set tabstop=4                 " Ширина таба
-set shiftwidth=4              " Ширина отступа для автоотступов
-set expandtab                 " Использовать пробелы вместо табов
-set autoindent                " Автоотступ при вводе
-set smartindent               " Умный отступ для кода
+" --- Отступы и табы ---
+set tabstop=4                " Отображение таба — 4 пробела
+set shiftwidth=4             " Отступы тоже 4
+set expandtab                " Превращать таб в пробелы
+set autoindent               " Автоматический отступ
+set smartindent              " Умный отступ
 
 " --- Цвета и графика ---
-set termguicolors            " TrueColor (если терминал поддерживает)
+set termguicolors            " TrueColor (если терминал умеет)
 
-" --- Типы файлов и плагины ---
-filetype plugin indent on     " Включить плагины и автоотступ по типу файла
+" --- Плагины и типы файлов ---
+filetype plugin indent on    " Автонастройки по типу файла
 
-" --- Буферы ---
-set hidden                    " Позволяет переключаться между файлами без сохранения
+" --- Работа с файлами ---
+set hidden                   " Можно переключаться без сохранения
+set nobackup                 " Не создавать .bak файлы
+set nowritebackup            " Не делать временную копию при записи
+set noswapfile               " Без .swp файлов
 
-" --- Безопасность ---
-set nobackup                  " Не создавать backup-файлы
-set nowritebackup             " Не создавать резервную копию при записи
-set noswapfile                " Отключить swap-файлы
-
-" --- Визуализация символов (по желанию) ---
-" set list                     " Показывать скрытые символы (опционально)
+" --- Подсветка пробелов (по желанию) ---
+" set list
 " set listchars=tab:→\ ,trail:·,extends:»,precedes:«
+"
+"
+" Указание дополнительного пути для кастомных цветов
+set runtimepath+=~/.myshell/vim
+" --- Цветовая схема ---
+set background=dark          " Темная тема
+colorscheme PaperColor       " Мягкая, не контрастная схема
+
+
